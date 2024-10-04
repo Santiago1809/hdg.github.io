@@ -5,11 +5,14 @@ import SearchIcon from "./Icons/SearchIcon.astro";
 ---
 
 <header class="flex items-center justify-between px-8 py-4 bg-header">
-  <h3 class="font-bold text-3xl">
-    <a href="/"><img src="/Logo.png" class="size-16" /></a>
-  </h3>
+  <a href="/" class=""
+    ><img
+      src="/Logo.png"
+      class="size-16 transition-transform duration-200 hover:scale-110"
+    /></a
+  >
   <div class="flex flex-col items-end">
-    <ul class="flex gap-5 font-semibold">
+    <ul class="flex gap-5 font-semibold mb-1">
       <li>
         <UserIcon />
       </li>

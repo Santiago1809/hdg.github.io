@@ -5,27 +5,28 @@ interface Props {
   title: string;
   description: string;
   image: string;
+  slug: string;
 }
-const { title, description, image } = Astro.props;
+const { title, description, image, slug } = Astro.props;
 ---
 
 <article
-  class="max-w-xs max-h-[42rem] bg-white flex flex-col items-start gap-y-2"
+  class="max-w-xs min-h-[30rem] max-h-[30rem] bg-white flex flex-col items-start justify-between gap-y-2"
 >
-  <img src={image} alt={title} />
-  <h3 class="font-semibold">{title}</h3>
+  <img src={image} alt={title} transition:name={`img-${slug}`}/>
+  <h3 class="font-semibold" transition:name={`title-${slug}`}>{title}</h3>
   <div>
-    <p class="prose-red">{description}</p>
+    <p class="prose-red text-left">{description}</p>
   </div>
   <div class="w-full flex justify-between mt-2">
     <button class="bg-orange-500 flex items-center">
       <DownloadIcon class="size-6 mr-2" />
       Descargar
     </button>
-    <button class="flex items-center">
+    <a id="navigate" href=`/receta/${slug}` class="flex items-center">
       <WatchIcon class="size-6 mr-2" />
       Ver
-    </button>
+    </a>
   </div>
 </article>
 <style>
@@ -55,10 +56,10 @@ const { title, description, image } = Astro.props;
     font-size: 1rem;
     color: #4a5568;
   }
-  button {
+  button, a#navigate {
     @apply px-4 py-2 border border-amber-950 rounded min-w-32 text-white font-bold transition-transform duration-150 hover:scale-105;
   }
-  button {
+  button, a#navigate {
     -webkit-text-stroke: 1px;
     -webkit-text-stroke-color: #41210a;
   }

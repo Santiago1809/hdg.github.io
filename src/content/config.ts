@@ -1,13 +1,15 @@
 import { defineCollection, z } from "astro:content";
 
-const cenas = defineCollection({
+const recetas = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
     image: z.string(),
+    type: z.enum(["cena", "almuerzo", "desayuno"]),
+    destacada: z.boolean(),
   })
 })
 
 export const collections = {
-  cenas
+  recetas
 }

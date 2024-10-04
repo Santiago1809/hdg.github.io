@@ -1,23 +1,29 @@
 ---
-import Card from "../../components/FoodCard.astro";
-import Layout from "../../layouts/Layout.astro";
 import { getCollection } from "astro:content";
+import FoodCard from "../../components/FoodCard.astro";
+import Layout from "../../layouts/Layout.astro";
 
-const cenas = await getCollection("cenas");
-
+const cenas = await getCollection("recetas", ({ data }) => {
+  return data.type == "cena";
+});
 export const prerender = true;
 ---
 
 <Layout title="Cenas">
   <section class="flex flex-wrap justify-center gap-20">
     {
-      cenas.map((cena) => (
-        <Card
-          title={cena.data.title}
-          description={cena.data.description}
-          image={cena.data.image}
-        />
-      ))
+      cenas.map((cena) => {
+        const { image, title, description } = cena.data;
+        const { slug } = cena;
+        return (
+          <FoodCard
+            title={title}
+            description={description}
+            image={image}
+            slug={slug}
+          />
+        );
+      })
     }
   </section>
 </Layout>

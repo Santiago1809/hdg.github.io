@@ -1,0 +1,47 @@
+---
+import { getCollection, render } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import BackButton from "../../components/BackButton";
+
+export async function getStaticPaths() {
+  const recetas = await getCollection("recetas");
+
+  return recetas.map((receta) => ({
+    params: {
+      id: receta.slug,
+    },
+    props: {
+      receta,
+    },
+  }));
+}
+
+const { receta } = Astro.props;
+const { data, slug } = receta;
+const { title, description, image } = data;
+const { Content } = await render(receta);
+export const prerender = true;
+---
+
+<Layout title={`${title.toWellFormed()}`}>
+  <section class="flex gap-12">
+    <aside class="flex flex-col items-center gap-4">
+      <BackButton client:idle />
+      <img
+        src={`${image}`}
+        alt={title}
+        class="rounded w-72 h-auto"
+        transition:name={`img-${slug}`}
+      />
+    </aside>
+    <div class="max-w-2xl">
+      <h1 class="text-4xl font-bold mb-4" transition:name={`title-${slug}`}>
+        {title}
+      </h1>
+      <div class="prose">
+        <Content />
+      </div>
+    </div>
+    <h1>{title}</h1>
+  </section>
+</Layout>
