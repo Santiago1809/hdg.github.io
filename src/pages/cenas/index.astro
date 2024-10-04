@@ -1,5 +1,5 @@
 ---
-import Card from "../../components/Card.astro";
+import Card from "../../components/FoodCard.astro";
 import Layout from "../../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 
@@ -9,7 +9,7 @@ export const prerender = true;
 ---
 
 <Layout title="Cenas">
-  <section class="m-16 flex gap-8">
+  <section class="flex flex-wrap justify-center gap-20">
     {
       cenas.map((cena) => (
         <Card
