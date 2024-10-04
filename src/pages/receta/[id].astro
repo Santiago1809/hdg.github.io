@@ -2,6 +2,7 @@
 import { getCollection, render } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import BackButton from "../../components/BackButton";
+import FoodScore from "../../components/FoodScore.astro";
 
 export async function getStaticPaths() {
   const recetas = await getCollection("recetas");
@@ -42,6 +43,8 @@ export const prerender = true;
         <Content />
       </div>
     </div>
-    <h1>{title}</h1>
+    <FoodScore server:defer id={slug} >
+      <span slot="fallback" class="text-xl">Cargando puntuación...</span>
+    </FoodScore>
   </section>
 </Layout>
