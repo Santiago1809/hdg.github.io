@@ -1,0 +1,23 @@
+---
+import Card from "../../components/Card.astro";
+import Layout from "../../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+const cenas = await getCollection("cenas");
+
+export const prerender = true;
+---
+
+<Layout title="Cenas">
+  <section class="m-16 flex gap-8">
+    {
+      cenas.map((cena) => (
+        <Card
+          title={cena.data.title}
+          description={cena.data.description}
+          image={cena.data.image}
+        />
+      ))
+    }
+  </section>
+</Layout>

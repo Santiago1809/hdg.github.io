@@ -1,0 +1,53 @@
+---
+import HamburguerMenu from "./Icons/HamburguerMenuIcon.astro";
+import UserIcon from "./Icons/UserIcon.astro";
+import SearchIcon from "./Icons/SearchIcon.astro";
+---
+
+<header class="flex items-center justify-between px-8 py-4 bg-header">
+  <h3 class="font-bold text-3xl">
+    <a href="/"><img src="/Logo.png" class="size-16" /></a>
+  </h3>
+  <div class="flex flex-col items-end">
+    <ul class="flex gap-5 font-semibold">
+      <li>
+        <UserIcon />
+      </li>
+      <li>
+        <SearchIcon />
+      </li>
+      <li>
+        <HamburguerMenu />
+      </li>
+    </ul>
+    <ul class="flex gap-5 text-sm text-body font-bold">
+      <li><a href="/desayunos">Desayunos</a></li>
+      <li><a href="/almuerzos">Almuerzos</a></li>
+      <li><a href="/cenas">Cenas</a></li>
+    </ul>
+  </div>
+</header>
+
+<style>
+  ul:nth-child(2) {
+    list-style: "- ";
+    & li {
+      transition: transform 0.2s;
+      & a {
+        -webkit-text-stroke: 0.6px;
+        -webkit-text-stroke-color: #41210a;
+      }
+    }
+    & li:hover {
+      transform: scale(1.1);
+    }
+    & :first-child {
+      list-style-type: none;
+    }
+  }
+  ul:first-child {
+    & li > svg {
+      @apply size-9 object-scale-down cursor-pointer transition-transform duration-300 hover:scale-110;
+    }
+  }
+</style>

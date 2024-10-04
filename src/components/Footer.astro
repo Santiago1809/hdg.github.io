@@ -1,0 +1,23 @@
+---
+import YoutubeIcon from "./Icons/YoutubeIcon.astro";
+import InstagramIcon from "./Icons/InstagramIcon.astro";
+import FacebookIcon from "./Icons/FacebookIcon.astro";
+---
+
+<ul class="flex items-center gap-6 justify-evenly min-h-28 bg-white font-bold">
+  <li>Terminos y condiciones</li>
+  <li>Copyright</li>
+  <ul class="flex items-center gap-8">
+    <li><FacebookIcon class="size-8" /></li>
+    <li><InstagramIcon class="size-8"/></li>
+    <li><YoutubeIcon/ class="size-10"></li>
+  </ul>
+</ul>
+
+<style>
+  ul {
+    color: white;
+    -webkit-text-stroke: 1px;
+    -webkit-text-stroke-color: #000;
+  }
+</style>

@@ -1,61 +1,65 @@
 ---
+import DownloadIcon from "./Icons/DownloadIcon.astro";
+import WatchIcon from "./Icons/WatchIcon.astro";
 interface Props {
-	title: string;
-	body: string;
-	href: string;
+  title: string;
+  description: string;
+  image: string;
 }
-
-const { href, title, body } = Astro.props;
+const { title, description, image } = Astro.props;
 ---
 
-<li class="link-card">
-	<a href={href}>
-		<h2>
-			{title}
-			<span>&rarr;</span>
-		</h2>
-		<p>
-			{body}
-		</p>
-	</a>
-</li>
+<article
+  class="max-w-xs max-h-[42rem] bg-white flex flex-col items-start gap-y-2"
+>
+  <img src={image} alt={title} />
+  <h3 class="font-semibold">{title}</h3>
+  <div>
+    <p class="prose-red">{description}</p>
+  </div>
+  <div class="w-full flex justify-between mt-2">
+    <button class="bg-orange-500 flex items-center">
+      <DownloadIcon class="size-6 mr-2" />
+      Descargar
+    </button>
+    <button class="flex items-center">
+      <WatchIcon class="size-6 mr-2" />
+      Ver
+    </button>
+  </div>
+</article>
 <style>
-	.link-card {
-		list-style: none;
-		display: flex;
-		padding: 1px;
-		background-color: #23262d;
-		background-image: none;
-		background-size: 400%;
-		border-radius: 7px;
-		background-position: 100%;
-		transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-		box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
-	}
-	.link-card > a {
-		width: 100%;
-		text-decoration: none;
-		line-height: 1.4;
-		padding: calc(1.5rem - 1px);
-		border-radius: 8px;
-		color: white;
-		background-color: #23262d;
-		opacity: 0.8;
-	}
-	h2 {
-		margin: 0;
-		font-size: 1.25rem;
-		transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-	}
-	p {
-		margin-top: 0.5rem;
-		margin-bottom: 0;
-	}
-	.link-card:is(:hover, :focus-within) {
-		background-position: 0;
-		background-image: var(--accent-gradient);
-	}
-	.link-card:is(:hover, :focus-within) h2 {
-		color: rgb(var(--accent-light));
-	}
+  article {
+    border-radius: 10px;
+    box-shadow:
+      20px 20px 50px #d9d9d9,
+      -30px -30px 60px #ffffff;
+    padding: 16px;
+    transition: box-shadow 0.2s;
+  }
+
+  img {
+    margin-bottom: 16px;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+  }
+
+  p {
+    font-size: 1rem;
+    color: #4a5568;
+  }
+  button {
+    @apply px-4 py-2 border border-amber-950 rounded min-w-32 text-white font-bold transition-transform duration-150 hover:scale-105;
+  }
+  button {
+    -webkit-text-stroke: 1px;
+    -webkit-text-stroke-color: #41210a;
+  }
 </style>
