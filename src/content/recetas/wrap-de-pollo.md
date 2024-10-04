@@ -5,7 +5,7 @@ image: /wrap-de-pollo.jpeg
 type: "cena"
 destacada: true
 ---
-<h3>Ingredientes</h2>
+<h3>Ingredientes</h3>
 <ul>
   <li>2 pechugas de pollo</li>
   <li>1/2 pimiento rojo</li>
