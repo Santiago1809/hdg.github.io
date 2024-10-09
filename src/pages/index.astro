@@ -2,7 +2,6 @@
 import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import FoodCard from "../components/FoodCard.astro";
-const currentYear = new Date().getFullYear();
 const recetas = await getCollection("recetas", ({ data }) => {
   return data.destacada === true;
 });

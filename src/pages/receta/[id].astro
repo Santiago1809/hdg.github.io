@@ -19,7 +19,7 @@ export async function getStaticPaths() {
 
 const { receta } = Astro.props;
 const { data, slug } = receta;
-const { title, description, image } = data;
+const { title,  image } = data;
 const { Content } = await render(receta);
 export const prerender = true;
 ---

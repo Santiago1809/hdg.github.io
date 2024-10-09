@@ -3,7 +3,7 @@ title: "Wrap de pollo con verduras"
 description: "Contiene tortillas de trigo integral, atún, aguacate, tomate, lechuga y mayonesa."
 image: /wrap-de-pollo.jpeg
 type: "cena"
-destacada: true
+destacada: false
 ---
 <h3>Ingredientes</h3>
 <ul>
